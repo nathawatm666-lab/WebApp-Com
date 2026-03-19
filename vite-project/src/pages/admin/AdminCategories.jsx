@@ -81,7 +81,7 @@ export default function AdminCategories() {
     return (
         <div>
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-                <h1 className="text-2xl font-bold text-white">📂 จัดการหมวดหมู่</h1>
+                <h1 className="text-2xl font-bold text-text-main">📂 จัดการหมวดหมู่</h1>
                 <button onClick={handleAdd} className="bg-accent hover:bg-accent-hover text-white px-4 py-2 rounded-lg font-medium shadow-lg shadow-accent/20 transition-colors">
                     + เพิ่มหมวดหมู่
                 </button>
@@ -90,18 +90,18 @@ export default function AdminCategories() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {loading ? (
                     Array.from({ length: 6 }).map((_, i) => (
-                        <div key={i} className="bg-dark-card rounded-xl border border-dark-border p-5 animate-pulse">
-                            <div className="h-8 w-8 bg-gray-800 rounded mb-3" />
-                            <div className="h-4 bg-gray-800 rounded w-2/3 mb-2" />
-                            <div className="h-3 bg-gray-800 rounded w-1/3" />
+                        <div key={i} className="bg-card rounded-xl border border-border p-5 animate-pulse">
+                            <div className="h-8 w-8 bg-border rounded mb-3" />
+                            <div className="h-4 bg-border rounded w-2/3 mb-2" />
+                            <div className="h-3 bg-border rounded w-1/3" />
                         </div>
                     ))
                 ) : (
                     categories.map(cat => (
-                        <div key={cat.id} className="bg-dark-card rounded-xl border border-dark-border p-5 hover:border-accent/40 transition-colors relative group">
+                        <div key={cat.id} className="bg-card rounded-xl border border-border p-5 hover:border-accent/40 transition-colors relative group">
                             <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button onClick={() => handleEdit(cat)} className="text-blue-400 hover:text-blue-300 bg-dark p-1.5 rounded-lg border border-dark-border" title="แก้ไข">✏️</button>
-                                <button onClick={() => handleDelete(cat.id)} className="text-red-400 hover:text-red-300 bg-dark p-1.5 rounded-lg border border-dark-border" title="ลบ">🗑️</button>
+                                <button onClick={() => handleEdit(cat)} className="text-blue-400 hover:text-blue-300 bg-primary p-1.5 rounded-lg border border-border" title="แก้ไข">✏️</button>
+                                <button onClick={() => handleDelete(cat.id)} className="text-red-400 hover:text-red-300 bg-primary p-1.5 rounded-lg border border-border" title="ลบ">🗑️</button>
                             </div>
                             <div className="flex items-center justify-between mb-3 pr-16">
                                 <span className="text-3xl">{cat.icon}</span>
@@ -109,13 +109,13 @@ export default function AdminCategories() {
                                     {cat.count} สินค้า
                                 </span>
                             </div>
-                            <h3 className="text-white font-semibold">{cat.name}</h3>
-                            <p className="text-gray-500 text-sm mt-1">/{cat.slug}</p>
+                             <h3 className="text-text-main font-semibold">{cat.name}</h3>
+                            <p className="text-text-muted text-sm mt-1">/{cat.slug}</p>
                         </div>
                     ))
                 )}
                 {!loading && categories.length === 0 && (
-                    <div className="col-span-full py-8 text-center text-gray-500 bg-dark-card rounded-xl border border-dark-border">
+                    <div className="col-span-full py-8 text-center text-text-muted bg-card rounded-xl border border-border">
                         ไม่พบหมวดหมู่
                     </div>
                 )}
@@ -124,24 +124,24 @@ export default function AdminCategories() {
             {/* Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
-                    <div className="bg-dark-card rounded-xl border border-dark-border p-6 w-full max-w-md my-8">
-                        <h2 className="text-xl font-bold text-white mb-6">{editingCat ? 'แก้ไขหมวดหมู่' : 'เพิ่มหมวดหมู่'}</h2>
+                    <div className="bg-card rounded-xl border border-border p-6 w-full max-w-md my-8">
+                        <h2 className="text-xl font-bold text-text-main mb-6">{editingCat ? 'แก้ไขหมวดหมู่' : 'เพิ่มหมวดหมู่'}</h2>
                         <form onSubmit={handleSave} className="space-y-4">
                             <div>
-                                <label className="block text-gray-400 text-sm mb-1">ชื่อหมวดหมู่ *</label>
-                                <input required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} className="w-full bg-dark border border-dark-border rounded-lg px-3 py-2 text-white outline-none focus:border-accent transition-colors" placeholder="เช่น ขายชุดคอมประกอบ" />
+                                <label className="block text-text-muted text-sm mb-1">ชื่อหมวดหมู่ *</label>
+                                <input required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} className="w-full bg-primary border border-border rounded-lg px-3 py-2 text-text-main outline-none focus:border-accent transition-colors" placeholder="เช่น ขายชุดคอมประกอบ" />
                             </div>
                             <div>
-                                <label className="block text-gray-400 text-sm mb-1">URL Slug</label>
-                                <input value={formData.slug} onChange={e => setFormData({ ...formData, slug: e.target.value })} className="w-full bg-dark border border-dark-border rounded-lg px-3 py-2 text-white outline-none focus:border-accent transition-colors" placeholder="เว้นว่างไว้เพื่อสร้างอัตโนมัติ" />
+                                <label className="block text-text-muted text-sm mb-1">URL Slug</label>
+                                <input value={formData.slug} onChange={e => setFormData({ ...formData, slug: e.target.value })} className="w-full bg-primary border border-border rounded-lg px-3 py-2 text-text-main outline-none focus:border-accent transition-colors" placeholder="เว้นว่างไว้เพื่อสร้างอัตโนมัติ" />
                             </div>
                             <div>
-                                <label className="block text-gray-400 text-sm mb-1">ไอคอน (Emoji หรือ ข้อความ)</label>
-                                <input value={formData.icon} onChange={e => setFormData({ ...formData, icon: e.target.value })} className="w-full bg-dark border border-dark-border rounded-lg px-3 py-2 text-white outline-none focus:border-accent transition-colors" placeholder="เช่น 💻, 🖱️, ⌨️" />
+                                <label className="block text-text-muted text-sm mb-1">ไอคอน (Emoji หรือ ข้อความ)</label>
+                                <input value={formData.icon} onChange={e => setFormData({ ...formData, icon: e.target.value })} className="w-full bg-primary border border-border rounded-lg px-3 py-2 text-text-main outline-none focus:border-accent transition-colors" placeholder="เช่น 💻, 🖱️, ⌨️" />
                             </div>
                             
                             <div className="flex justify-end gap-3 mt-6">
-                                <button type="button" onClick={() => setIsModalOpen(false)} className="px-5 py-2 border border-dark-border text-gray-400 rounded-lg hover:bg-dark-lighter transition-colors">ยกเลิก</button>
+                                <button type="button" onClick={() => setIsModalOpen(false)} className="px-5 py-2 border border-border text-text-muted rounded-lg hover:bg-card-hover transition-colors">ยกเลิก</button>
                                 <button type="submit" className="px-5 py-2 bg-accent hover:bg-accent-hover text-white rounded-lg shadow-lg shadow-accent/20 transition-colors">บันทึก</button>
                             </div>
                         </form>

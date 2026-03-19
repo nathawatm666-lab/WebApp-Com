@@ -34,45 +34,45 @@ export default function RegisterPage() {
     return (
         <div className="min-h-[60vh] flex items-center justify-center px-4 py-12">
             <div className="w-full max-w-md">
-                <div className="bg-dark-card rounded-2xl border border-dark-border p-8">
+                <div className="bg-card rounded-2xl border border-border p-8">
                     <div className="text-center mb-6">
                         <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-3">
                             <span className="text-accent text-2xl">📝</span>
                         </div>
-                        <h1 className="text-2xl font-bold text-white">สมัครสมาชิก</h1>
-                        <p className="text-gray-500 text-sm mt-1">สร้างบัญชีใหม่เพื่อเริ่มช้อปปิ้ง</p>
+                        <h1 className="text-2xl font-bold text-text-main">สมัครสมาชิก</h1>
+                        <p className="text-text-muted text-sm mt-1">สร้างบัญชีใหม่เพื่อเริ่มช้อปปิ้ง</p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
-                            <label className="text-gray-400 text-sm mb-1 block">ชื่อ-นามสกุล</label>
-                            <input value={form.name} onChange={e => update('name', e.target.value)} required placeholder="สมชาย ใจดี" className="w-full bg-dark border border-dark-border rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:border-accent focus:outline-none" />
+                            <label className="text-text-muted text-sm mb-1 block">ชื่อ-นามสกุล</label>
+                            <input value={form.name} onChange={e => update('name', e.target.value)} required placeholder="สมชาย ใจดี" className="w-full bg-primary border border-border rounded-lg px-4 py-3 text-sm text-text-main placeholder-text-muted/60 focus:border-accent focus:outline-none" />
                         </div>
                         <div>
-                            <label className="text-gray-400 text-sm mb-1 block">อีเมล</label>
-                            <input type="email" value={form.email} onChange={e => update('email', e.target.value)} required placeholder="you@example.com" className="w-full bg-dark border border-dark-border rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:border-accent focus:outline-none" />
+                            <label className="text-text-muted text-sm mb-1 block">อีเมล</label>
+                            <input type="email" value={form.email} onChange={e => update('email', e.target.value)} required placeholder="you@example.com" className="w-full bg-primary border border-border rounded-lg px-4 py-3 text-sm text-text-main placeholder-text-muted/60 focus:border-accent focus:outline-none" />
                         </div>
                         <div>
-                            <label className="text-gray-400 text-sm mb-1 block">เบอร์โทรศัพท์</label>
-                            <input value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="081-234-5678" className="w-full bg-dark border border-dark-border rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:border-accent focus:outline-none" />
+                            <label className="text-text-muted text-sm mb-1 block">เบอร์โทรศัพท์</label>
+                            <input value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="081-234-5678" className="w-full bg-primary border border-border rounded-lg px-4 py-3 text-sm text-text-main placeholder-text-muted/60 focus:border-accent focus:outline-none" />
                         </div>
                         <div>
-                            <label className="text-gray-400 text-sm mb-1 block">รหัสผ่าน</label>
-                            <input type="password" value={form.password} onChange={e => update('password', e.target.value)} required placeholder="••••••••" className="w-full bg-dark border border-dark-border rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:border-accent focus:outline-none" />
+                            <label className="text-text-muted text-sm mb-1 block">รหัสผ่าน</label>
+                            <input type="password" value={form.password} onChange={e => update('password', e.target.value)} required placeholder="••••••••" className="w-full bg-primary border border-border rounded-lg px-4 py-3 text-sm text-text-main placeholder-text-muted/60 focus:border-accent focus:outline-none" />
                         </div>
                         <div>
-                            <label className="text-gray-400 text-sm mb-1 block">ยืนยันรหัสผ่าน</label>
-                            <input type="password" value={form.confirm} onChange={e => update('confirm', e.target.value)} required placeholder="••••••••" className="w-full bg-dark border border-dark-border rounded-lg px-4 py-3 text-sm text-white placeholder-gray-600 focus:border-accent focus:outline-none" />
+                            <label className="text-text-muted text-sm mb-1 block">ยืนยันรหัสผ่าน</label>
+                            <input type="password" value={form.confirm} onChange={e => update('confirm', e.target.value)} required placeholder="••••••••" className="w-full bg-primary border border-border rounded-lg px-4 py-3 text-sm text-text-main placeholder-text-muted/60 focus:border-accent focus:outline-none" />
                         </div>
 
                         {error && <p className="text-red-400 text-sm">{error}</p>}
 
-                        <button type="submit" disabled={loading} className="w-full bg-accent hover:bg-accent-hover disabled:bg-gray-700 text-white font-semibold py-3 rounded-xl transition-colors cursor-pointer">
+                        <button type="submit" disabled={loading} className="w-full bg-accent hover:bg-accent-hover disabled:bg-card-hover disabled:text-text-muted text-white font-semibold py-3 rounded-xl transition-colors cursor-pointer">
                             {loading ? '⏳ กำลังสมัคร...' : 'สมัครสมาชิก'}
                         </button>
                     </form>
 
-                    <p className="text-center text-gray-500 text-sm mt-6">
+                    <p className="text-center text-text-muted text-sm mt-6">
                         มีบัญชีอยู่แล้ว?{' '}
                         <Link to="/login" className="text-accent hover:underline">เข้าสู่ระบบ</Link>
                     </p>

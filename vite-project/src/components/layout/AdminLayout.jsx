@@ -2,9 +2,8 @@ import { Navigate, Outlet, Link, useLocation } from 'react-router-dom';
 import useAuthStore from '../../store/authStore';
 
 const navItems = [
-    { path: '/admin', label: '📊 แดชบอร์ด', exact: true },
-    { path: '/admin/products', label: '📦 สินค้า' },
     { path: '/admin/orders', label: '🛒 คำสั่งซื้อ' },
+    { path: '/admin/products', label: '📦 สินค้า' },
     { path: '/admin/categories', label: '📂 หมวดหมู่' },
 ];
 
@@ -17,15 +16,15 @@ export default function AdminLayout() {
     }
 
     return (
-        <div className="min-h-screen bg-dark flex">
+        <div className="min-h-screen bg-primary flex transition-colors">
             {/* Sidebar */}
-            <aside className="w-64 bg-dark-card border-r border-dark-border hidden lg:flex flex-col shrink-0">
-                <div className="p-5 border-b border-dark-border">
+            <aside className="w-64 bg-card border-r border-border hidden lg:flex flex-col shrink-0 transition-colors">
+                <div className="p-5 border-b border-border">
                     <Link to="/" className="flex items-center gap-2">
                         <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
                             <span className="text-white font-black text-sm">TH</span>
                         </div>
-                        <span className="text-white font-bold text-lg">Admin</span>
+                        <span className="text-text-main font-bold text-lg">Admin</span>
                     </Link>
                 </div>
 
@@ -40,7 +39,7 @@ export default function AdminLayout() {
                                 to={item.path}
                                 className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${isActive
                                         ? 'bg-accent/10 text-accent'
-                                        : 'text-gray-400 hover:text-white hover:bg-dark-lighter'
+                                        : 'text-text-muted hover:text-text-main hover:bg-card-hover'
                                     }`}
                             >
                                 {item.label}
@@ -49,8 +48,8 @@ export default function AdminLayout() {
                     })}
                 </nav>
 
-                <div className="p-4 border-t border-dark-border">
-                    <Link to="/" className="block px-4 py-2 text-sm text-gray-500 hover:text-white rounded-lg hover:bg-dark-lighter transition-colors">
+                <div className="p-4 border-t border-border">
+                    <Link to="/" className="block px-4 py-2 text-sm text-text-muted hover:text-text-main rounded-lg hover:bg-card-hover transition-colors">
                         ← กลับหน้าร้าน
                     </Link>
                 </div>
@@ -59,12 +58,12 @@ export default function AdminLayout() {
             {/* Main Content */}
             <div className="flex-1 flex flex-col min-w-0">
                 {/* Top bar */}
-                <header className="bg-dark-card border-b border-dark-border h-14 flex items-center px-6 gap-4 shrink-0">
+                <header className="bg-card border-b border-border h-14 flex items-center px-6 gap-4 shrink-0 transition-colors">
                     <div className="lg:hidden">
                         <Link to="/" className="text-accent font-bold">TH Admin</Link>
                     </div>
                     <div className="flex-1" />
-                    <span className="text-gray-400 text-sm">👤 {user?.name}</span>
+                    <span className="text-text-muted text-sm">👤 {user?.name}</span>
                 </header>
 
                 {/* Page content */}

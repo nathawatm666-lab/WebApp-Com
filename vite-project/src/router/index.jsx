@@ -12,7 +12,6 @@ import LoginPage from '../pages/account/LoginPage';
 import RegisterPage from '../pages/account/RegisterPage';
 import ProfilePage from '../pages/account/ProfilePage';
 import OrderHistoryPage from '../pages/account/OrderHistoryPage';
-import AdminDashboard from '../pages/admin/AdminDashboard';
 import AdminProducts from '../pages/admin/AdminProducts';
 import AdminOrders from '../pages/admin/AdminOrders';
 import AdminCategories from '../pages/admin/AdminCategories';
@@ -37,7 +36,7 @@ export default function AppRouter() {
 
             {/* Admin routes */}
             <Route path="/admin" element={<AdminLayout />}>
-                <Route index element={<AdminDashboard />} />
+                <Route index element={<AdminOrders />} />
                 <Route path="products" element={<AdminProducts />} />
                 <Route path="orders" element={<AdminOrders />} />
                 <Route path="categories" element={<AdminCategories />} />

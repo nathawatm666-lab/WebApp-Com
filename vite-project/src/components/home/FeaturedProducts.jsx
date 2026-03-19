@@ -18,7 +18,7 @@ export default function FeaturedProducts() {
     return (
         <section className="mt-10">
             <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl md:text-2xl font-bold text-white">🌟 สินค้าแนะนำ</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-text-main">🌟 สินค้าแนะนำ</h2>
                 <Link to="/search" className="text-accent text-sm hover:underline">ดูทั้งหมด →</Link>
             </div>
 

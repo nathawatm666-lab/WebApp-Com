@@ -35,11 +35,11 @@ export default function FlashSale() {
         <section className="mt-10">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-3">
                 <div className="flex items-center gap-3">
-                    <h2 className="text-xl md:text-2xl font-bold text-white">⚡ Flash Sale</h2>
-                    <span className="text-sm text-gray-400">ราคาพิเศษ วันนี้เท่านั้น!</span>
+                    <h2 className="text-xl md:text-2xl font-bold text-text-main">⚡ Flash Sale</h2>
+                    <span className="text-sm text-text-muted">ราคาพิเศษ วันนี้เท่านั้น!</span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <span className="text-gray-400 text-sm">สิ้นสุดใน</span>
+                    <span className="text-text-muted text-sm">สิ้นสุดใน</span>
                     <div className="flex gap-1">
                         {[pad(timeLeft.h), pad(timeLeft.m), pad(timeLeft.s)].map((t, i) => (
                             <span key={i} className="flex items-center">
