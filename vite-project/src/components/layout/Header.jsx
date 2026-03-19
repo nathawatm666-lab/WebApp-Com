@@ -4,6 +4,7 @@ import useCartStore from '../../store/cartStore';
 import useAuthStore from '../../store/authStore';
 import MegaMenu from './MegaMenu';
 import MobileMenu from './MobileMenu';
+import ThemeToggle from '../ui/ThemeToggle';
 
 export default function Header() {
     const [searchQuery, setSearchQuery] = useState('');
@@ -24,7 +25,7 @@ export default function Header() {
 
     return (
         <>
-            <header className="sticky top-0 z-50 bg-dark-card/95 backdrop-blur-md border-b border-dark-border">
+            <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border transition-colors">
                 {/* Top announcement bar */}
                 <div className="bg-accent text-white text-center text-xs py-1.5 font-medium">
                     🔥 ส่งฟรีทั่วไทย เมื่อสั่งซื้อครบ ฿2,000 | โค้ด WELCOME10 ลด 10%
@@ -35,7 +36,7 @@ export default function Header() {
                         {/* Mobile menu button */}
                         <button
                             onClick={() => setShowMobile(true)}
-                            className="lg:hidden text-gray-300 hover:text-white cursor-pointer"
+                            className="lg:hidden text-text-muted hover:text-text-main cursor-pointer"
                         >
                             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -79,7 +80,7 @@ export default function Header() {
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     placeholder="ค้นหาสินค้า... เช่น RTX 4090, Ryzen 7"
-                                    className="w-full bg-dark border border-dark-border rounded-lg pl-4 pr-10 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+                                    className="w-full bg-primary border border-border rounded-lg pl-4 pr-10 py-2.5 text-sm text-text-main placeholder-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
                                 />
                                 <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-accent cursor-pointer">
                                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -91,29 +92,31 @@ export default function Header() {
 
                         {/* Right actions */}
                         <div className="flex items-center gap-1 sm:gap-3">
+                            <ThemeToggle />
+
                             {/* Account */}
                             {isLoggedIn ? (
                                 <div className="relative group">
-                                    <button className="flex items-center gap-2 text-gray-300 hover:text-white px-2 py-2 rounded-lg transition-colors cursor-pointer">
+                                    <button className="flex items-center gap-2 text-text-muted hover:text-text-main px-2 py-2 rounded-lg transition-colors cursor-pointer">
                                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                         </svg>
                                         <span className="hidden md:block text-sm">{user?.name?.split(' ')[0]}</span>
                                     </button>
-                                    <div className="absolute right-0 top-full mt-1 bg-dark-card border border-dark-border rounded-lg shadow-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                        <Link to="/account/profile" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-dark-lighter">โปรไฟล์</Link>
-                                        <Link to="/account/orders" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-dark-lighter">ประวัติคำสั่งซื้อ</Link>
+                                    <div className="absolute right-0 top-full mt-1 bg-card border border-border rounded-lg shadow-xl py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                        <Link to="/account/profile" className="block px-4 py-2 text-sm text-text-muted hover:text-text-main hover:bg-card-hover">โปรไฟล์</Link>
+                                        <Link to="/account/orders" className="block px-4 py-2 text-sm text-text-muted hover:text-text-main hover:bg-card-hover">ประวัติคำสั่งซื้อ</Link>
                                         {user?.role === 'admin' && (
-                                            <Link to="/admin" className="block px-4 py-2 text-sm text-accent hover:bg-dark-lighter">🛠 แอดมิน</Link>
+                                            <Link to="/admin" className="block px-4 py-2 text-sm text-accent hover:bg-card-hover">🛠 แอดมิน</Link>
                                         )}
-                                        <hr className="border-dark-border my-1" />
-                                        <button onClick={logout} className="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-dark-lighter cursor-pointer">ออกจากระบบ</button>
+                                        <hr className="border-border my-1" />
+                                        <button onClick={logout} className="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-card-hover cursor-pointer">ออกจากระบบ</button>
                                     </div>
                                 </div>
                             ) : (
                                 <Link
                                     to="/login"
-                                    className="flex items-center gap-2 text-gray-300 hover:text-white px-2 py-2 rounded-lg transition-colors"
+                                    className="flex items-center gap-2 text-text-muted hover:text-text-main px-2 py-2 rounded-lg transition-colors"
                                 >
                                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -125,7 +128,7 @@ export default function Header() {
                             {/* Cart */}
                             <Link
                                 to="/cart"
-                                className="relative flex items-center gap-2 text-gray-300 hover:text-white px-2 py-2 rounded-lg transition-colors"
+                                className="relative flex items-center gap-2 text-text-muted hover:text-text-main px-2 py-2 rounded-lg transition-colors"
                             >
                                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />

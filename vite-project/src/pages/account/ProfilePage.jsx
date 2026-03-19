@@ -19,31 +19,31 @@ export default function ProfilePage() {
 
     return (
         <div className="max-w-2xl mx-auto px-4 py-6">
-            <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+            <nav className="flex items-center gap-2 text-sm text-text-muted mb-6">
                 <Link to="/" className="hover:text-accent">หน้าแรก</Link>
                 <span>/</span>
-                <span className="text-white">โปรไฟล์</span>
+                <span className="text-text-main">โปรไฟล์</span>
             </nav>
 
-            <h1 className="text-2xl font-bold text-white mb-6">👤 โปรไฟล์ของฉัน</h1>
+            <h1 className="text-2xl font-bold text-text-main mb-6">👤 โปรไฟล์ของฉัน</h1>
 
-            <div className="bg-dark-card rounded-xl border border-dark-border p-6">
+            <div className="bg-card rounded-xl border border-border p-6">
                 <form onSubmit={handleSave} className="space-y-4">
                     <div>
-                        <label className="text-gray-400 text-sm mb-1 block">อีเมล</label>
-                        <input value={user?.email || ''} disabled className="w-full bg-dark border border-dark-border rounded-lg px-4 py-3 text-sm text-gray-500" />
+                        <label className="text-text-muted text-sm mb-1 block">อีเมล</label>
+                        <input value={user?.email || ''} disabled className="w-full bg-primary border border-border rounded-lg px-4 py-3 text-sm text-text-muted" />
                     </div>
                     <div>
-                        <label className="text-gray-400 text-sm mb-1 block">ชื่อ-นามสกุล</label>
-                        <input value={name} onChange={e => setName(e.target.value)} className="w-full bg-dark border border-dark-border rounded-lg px-4 py-3 text-sm text-white focus:border-accent focus:outline-none" />
+                        <label className="text-text-muted text-sm mb-1 block">ชื่อ-นามสกุล</label>
+                        <input value={name} onChange={e => setName(e.target.value)} className="w-full bg-primary border border-border rounded-lg px-4 py-3 text-sm text-text-main focus:border-accent focus:outline-none" />
                     </div>
                     <div>
-                        <label className="text-gray-400 text-sm mb-1 block">เบอร์โทรศัพท์</label>
-                        <input value={phone} onChange={e => setPhone(e.target.value)} className="w-full bg-dark border border-dark-border rounded-lg px-4 py-3 text-sm text-white focus:border-accent focus:outline-none" />
+                        <label className="text-text-muted text-sm mb-1 block">เบอร์โทรศัพท์</label>
+                        <input value={phone} onChange={e => setPhone(e.target.value)} className="w-full bg-primary border border-border rounded-lg px-4 py-3 text-sm text-text-main focus:border-accent focus:outline-none" />
                     </div>
                     <div>
-                        <label className="text-gray-400 text-sm mb-1 block">บทบาท</label>
-                        <input value={user?.role === 'admin' ? 'ผู้ดูแลระบบ' : 'ลูกค้า'} disabled className="w-full bg-dark border border-dark-border rounded-lg px-4 py-3 text-sm text-gray-500" />
+                        <label className="text-text-muted text-sm mb-1 block">บทบาท</label>
+                        <input value={user?.role === 'admin' ? 'ผู้ดูแลระบบ' : 'ลูกค้า'} disabled className="w-full bg-primary border border-border rounded-lg px-4 py-3 text-sm text-text-muted" />
                     </div>
                     <button type="submit" className="bg-accent hover:bg-accent-hover text-white font-semibold px-6 py-3 rounded-xl transition-colors cursor-pointer">
                         บันทึกการเปลี่ยนแปลง

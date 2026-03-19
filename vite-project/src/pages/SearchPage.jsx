@@ -29,15 +29,15 @@ export default function SearchPage() {
 
     return (
         <div className="max-w-7xl mx-auto px-4 py-6">
-            <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+            <nav className="flex items-center gap-2 text-sm text-text-muted mb-6">
                 <Link to="/" className="hover:text-accent">หน้าแรก</Link>
                 <span>/</span>
-                <span className="text-white">ผลการค้นหา</span>
+                <span className="text-text-main">ผลการค้นหา</span>
             </nav>
 
-            <h1 className="text-xl font-bold text-white mb-6">
+            <h1 className="text-xl font-bold text-text-main mb-6">
                 {query ? (
-                    <>ผลการค้นหา "<span className="text-accent">{query}</span>" <span className="text-gray-500 text-sm font-normal">({products.length} รายการ)</span></>
+                    <>ผลการค้นหา "<span className="text-accent">{query}</span>" <span className="text-text-muted text-sm font-normal">({products.length} รายการ)</span></>
                 ) : (
                     'กรุณาพิมพ์คำค้นหา'
                 )}
@@ -54,8 +54,8 @@ export default function SearchPage() {
             ) : query ? (
                 <div className="text-center py-20">
                     <p className="text-5xl mb-4">🔍</p>
-                    <p className="text-gray-400 text-lg">ไม่พบสินค้าที่ตรงกับ "{query}"</p>
-                    <p className="text-gray-600 text-sm mt-2">ลองใช้คำค้นหาอื่น เช่น RTX, Ryzen, DDR5</p>
+                    <p className="text-text-muted text-lg">ไม่พบสินค้าที่ตรงกับ "{query}"</p>
+                    <p className="text-text-muted opacity-60 text-sm mt-2">ลองใช้คำค้นหาอื่น เช่น RTX, Ryzen, DDR5</p>
                 </div>
             ) : null}
         </div>

@@ -75,7 +75,13 @@ try {
             echo json_encode($results);
         }
     } elseif ($method === 'POST') {
-        $data = json_decode(file_get_contents("php://input"), true);
+        $originalData = json_decode(file_get_contents("php://input"), true);
+        
+        if (!isset($originalData['id'])) {
+            $originalData['id'] = uniqid();
+        }
+        
+        $data = $originalData;
         $keys = array_keys($data);
         $fields = implode("`, `", $keys);
         $placeholders = implode(", ", array_fill(0, count($keys), "?"));
@@ -92,7 +98,8 @@ try {
         $sql = "INSERT INTO `$table` (`$fields`) VALUES ($placeholders)";
         $stmt = $conn->prepare($sql);
         $stmt->execute(array_values($data));
-        echo json_encode(["success" => true, "id" => $conn->lastInsertId()]);
+        
+        echo json_encode($originalData);
     }
 } catch (PDOException $e) {
     http_response_code(500);

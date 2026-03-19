@@ -66,35 +66,35 @@ export default function CategoryPage() {
     return (
         <div className="max-w-7xl mx-auto px-4 py-6">
             {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+            <nav className="flex items-center gap-2 text-sm text-text-muted mb-6">
                 <Link to="/" className="hover:text-accent">หน้าแรก</Link>
                 <span>/</span>
-                <span className="text-white">{category?.name || slug}</span>
+                <span className="text-text-main">{category?.name || slug}</span>
             </nav>
 
             <div className="flex flex-col lg:flex-row gap-6">
                 {/* Sidebar filters */}
                 <aside className="lg:w-64 shrink-0">
-                    <div className="bg-dark-card rounded-xl border border-dark-border p-4 sticky top-24 space-y-5">
-                        <h3 className="text-white font-semibold text-sm">ตัวกรอง</h3>
+                    <div className="bg-card rounded-xl border border-border p-4 sticky top-24 space-y-5">
+                        <h3 className="text-text-main font-semibold text-sm">ตัวกรอง</h3>
 
                         {/* Price Range */}
                         <div>
-                            <label className="text-gray-400 text-xs font-medium block mb-2">ช่วงราคา</label>
+                            <label className="text-text-muted text-xs font-medium block mb-2">ช่วงราคา</label>
                             <div className="flex items-center gap-2">
                                 <input
                                     type="number"
                                     value={priceRange[0]}
                                     onChange={e => setPriceRange([+e.target.value, priceRange[1]])}
-                                    className="w-full bg-dark border border-dark-border rounded-lg px-2 py-1.5 text-xs text-white"
+                                    className="w-full bg-primary border border-border rounded-lg px-2 py-1.5 text-xs text-text-main"
                                     placeholder="ต่ำสุด"
                                 />
-                                <span className="text-gray-500">-</span>
+                                <span className="text-text-muted">-</span>
                                 <input
                                     type="number"
                                     value={priceRange[1]}
                                     onChange={e => setPriceRange([priceRange[0], +e.target.value])}
-                                    className="w-full bg-dark border border-dark-border rounded-lg px-2 py-1.5 text-xs text-white"
+                                    className="w-full bg-primary border border-border rounded-lg px-2 py-1.5 text-xs text-text-main"
                                     placeholder="สูงสุด"
                                 />
                             </div>
@@ -103,7 +103,7 @@ export default function CategoryPage() {
                         {/* Brand filter */}
                         {brands.length > 0 && (
                             <div>
-                                <label className="text-gray-400 text-xs font-medium block mb-2">แบรนด์</label>
+                                <label className="text-text-muted text-xs font-medium block mb-2">แบรนด์</label>
                                 <div className="space-y-1.5">
                                     {brands.map(brand => (
                                         <label key={brand} className="flex items-center gap-2 cursor-pointer">
@@ -113,7 +113,7 @@ export default function CategoryPage() {
                                                 onChange={() => toggleBrand(brand)}
                                                 className="accent-accent w-3.5 h-3.5"
                                             />
-                                            <span className="text-gray-300 text-sm">{brand}</span>
+                                            <span className="text-text-main text-sm">{brand}</span>
                                         </label>
                                     ))}
                                 </div>
@@ -128,7 +128,7 @@ export default function CategoryPage() {
                                 onChange={(e) => setInStockOnly(e.target.checked)}
                                 className="accent-accent w-3.5 h-3.5"
                             />
-                            <span className="text-gray-300 text-sm">มีสินค้าเท่านั้น</span>
+                            <span className="text-text-main text-sm">มีสินค้าเท่านั้น</span>
                         </label>
                     </div>
                 </aside>
@@ -136,14 +136,14 @@ export default function CategoryPage() {
                 {/* Products */}
                 <div className="flex-1">
                     <div className="flex items-center justify-between mb-4">
-                        <h1 className="text-xl font-bold text-white">
+                        <h1 className="text-xl font-bold text-text-main">
                             {category?.name || slug}
-                            <span className="text-gray-500 text-sm font-normal ml-2">({filteredProducts.length} สินค้า)</span>
+                            <span className="text-text-muted text-sm font-normal ml-2">({filteredProducts.length} สินค้า)</span>
                         </h1>
                         <select
                             value={sortBy}
                             onChange={e => setSortBy(e.target.value)}
-                            className="bg-dark-card border border-dark-border rounded-lg px-3 py-2 text-sm text-white"
+                            className="bg-card border border-border rounded-lg px-3 py-2 text-sm text-text-main"
                         >
                             {SORT_OPTIONS.map(opt => (
                                 <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -158,7 +158,7 @@ export default function CategoryPage() {
                             filteredProducts.map(p => <ProductCard key={p.id} product={p} />)
                         ) : (
                             <div className="col-span-full text-center py-20">
-                                <p className="text-gray-500 text-lg">ไม่พบสินค้าในหมวดหมู่นี้</p>
+                                <p className="text-text-muted text-lg">ไม่พบสินค้าในหมวดหมู่นี้</p>
                             </div>
                         )}
                     </div>
